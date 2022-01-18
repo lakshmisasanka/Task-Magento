@@ -1,0 +1,16 @@
+{
+    "testschema_schema": {
+        "column": {
+            "schema_id": true,
+            "schema_name": true,
+            "description": true,
+            "is_enabled": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "TESTSCHEMA_SCHEMA_SCHEMA_NAME": true,
+            "PRIMARY": true
+        }
+    }
+}

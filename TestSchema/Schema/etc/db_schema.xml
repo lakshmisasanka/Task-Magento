@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="testschema_schema" resource="default" engine="innodb" comment="Test_ExampleTest Table" charset="utf8" collation="utf8_general_ci">
+        <column xsi:type="int" name="schema_id" padding="11" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="schema_name" nullable="false" length="100" comment="test name"/> 
+        <column xsi:type="text" name="description" nullable="false" comment="test description"/>
+        <column xsi:type="boolean" name="is_enabled" nullable="false" default="0" comment="is enabled"/>
+       <column xsi:type="timestamp" name="created_at"  default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp"  name="updated_at" default="CURRENT_TIMESTAMP" on_update="true" nullable="false"/>
+        
+        <constraint xsi:type="unique" referenceId="TESTSCHEMA_SCHEMA_SCHEMA_NAME">
+        <column name="schema_name"/>
+        </constraint>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="schema_id"/>
+        </constraint>
+    </table>
+</schema>

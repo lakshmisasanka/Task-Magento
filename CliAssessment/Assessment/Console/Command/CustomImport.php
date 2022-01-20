@@ -46,7 +46,7 @@ class CustomImport extends Command
         $this->setName('customer:importer');
         $this->setDescription('Imports Customer into Magento from a CSV');
         $this->addArgument('import_path', InputArgument::REQUIRED, 'The path of the import file (ie. ../../path/to/file.csv)');
-        $this->addOption('profile',null, InputOption::VALUE_OPTIONAL, 'csv');
+        $this->addOption('profile', null, InputOption::VALUE_OPTIONAL, 'csv');
         parent::configure();
     }
  
@@ -55,7 +55,7 @@ class CustomImport extends Command
     {
        
         try {
-            $this->state->setAreaCode('adminhtml');
+            $this->state->setAreaCode('Area::AREA_GLOBAL');
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
             
         }
@@ -73,6 +73,8 @@ class CustomImport extends Command
         );
  
         $read_file = $this->readFactory->create($import_file['dirname']);
+
+       
      
         $csvSource = $this->csvSourceFactory->create(
             array(
@@ -81,7 +83,11 @@ class CustomImport extends Command
             )
         );
        
+        $validate = $import->validateSource($csvSource);
         
+        if (!$validate) {
+          $output->writeln('<error>Unable to validate the CSV.</error>');
+        }
  
         $result = $import->importSource();
         if ($result) {

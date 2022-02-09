@@ -1,0 +1,55 @@
+<?php
+    $product = $block->getProduct();
+    $data = $this->getProduct()->getAttributeText('product_preorder_attribute');
+    $product_id = $product->getId();
+?>
+
+<?php if($data == 'Yes'): ?>
+<div class="customform">
+        <form name="addData" method="post" id="addData" class="form" action="<?php echo $block->getUrl('pre/preorder/save'); ?>" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+         data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span>Pre-order Form</span></legend>
+                <div class="field name required">
+                    <label class="label" for="firstname"><span>First Name</span></label>
+                    <div class="control">
+                    <input name="product_id" id="product_id" title="Id" class="input-text" value="<?php echo $product_id; ?>" type="hidden">
+                    <input name="first_name" id="first_name" title="Firstname" value="" class="input-text" type="text" data-validate="{required:true}">
+                    </div>
+                </div>
+
+                <div class="field name required">
+                    <label class="label" for="lastname"><span>Last Name</span></label>
+                    <div class="control">
+                    <input name="last_name" id="last_name" title="Lastname" value="" class="input-text" type="text" data-validate="{required:true}">
+                    </div>
+                </div>
+
+                <div class="field email required">
+                    <label class="label" for="cemail"><span>Email</span></label>
+                    <div class="control">
+                    <input name="email" id="email" title="Email" value="" class="input-text" type="text" data-validate="{required:true,'validate-email':true}">
+                    </div>
+                </div>
+
+                <div class="field required">
+                    <label class="label" for="content"><span>Quantity</span></label>
+                    <div class="control">
+                    <input name="quantity" id="quantity" title="Quantity" value="" class="input-number" type="text" data-validate="{'required':true, 'pattern':/^\d+(\.\d{1,2})?$/, 'validate-greater-than-zero':true}"
+>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="Save"><span>Save</span></button>
+                </div>
+            </div>
+        </form>
+</div>
+
+ <?php endif; ?>
+
+
+
+ 

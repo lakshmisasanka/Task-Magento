@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Task_Preorder::preorder" title="Preorder" translate="title" module="Task_Preorder" sortOrder="50" parent="Magento_Catalog::inventory" action="preorder/index" resource="Task_Preorder::preorder"/>
+    </menu>
+</config>

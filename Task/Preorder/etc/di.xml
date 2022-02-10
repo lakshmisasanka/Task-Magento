@@ -6,6 +6,18 @@
             </argument>
         </arguments>
     </type>
+    <type name="Task\Preorder\Ui\Component\MassAction\Status\Options">
+             <arguments>
+            <argument name="data" xsi:type="array">
+            <item name="urlPath" xsi:type="string">preorder/index/status</item>
+            <item name="paramName" xsi:type="string">status</item>
+            <item name="confirm" xsi:type="array">
+                <item name="title" xsi:type="string" translatable="true">Change Status</item>
+                <item name="message" xsi:type="string" translatable="true">Are you sure?</item>
+            </item>
+        </argument>
+        </arguments>
+    </type>
     <virtualType name="Task\Preorder\Model\ResourceModel\Preorder\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">preorder</argument>

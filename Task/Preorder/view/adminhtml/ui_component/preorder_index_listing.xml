@@ -49,17 +49,32 @@
                 </item>
             </argument>
         </filterSearch>
-
-        
-       
         <paging name="listing_paging"/>
+
+       
+        <massaction name="listing_massaction">
+        <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+                 <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                 <item name="indexField" xsi:type="string">preorder_id</item>
+            </item>
+        </argument>
+            
+    <action name="change_status">
+        <settings>
+            <type>change_status</type>
+            <label translate="true">Change Status</label>
+            <actions class="Task\Preorder\Ui\Component\MassAction\Status\Options"/>
+        </settings>
+    </action>
+    </massaction>
 
     </listingToolbar>
 
     <columns name="preorder_columns">
         <selectionsColumn name="ids">
             <settings>
-                <indexField>id</indexField>
+                <indexField>preorder_id</indexField>
             </settings>
         </selectionsColumn>
         <column name="preorder_id">
@@ -113,5 +128,16 @@
                 </item>
             </argument>
         </column>
+         <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Task\Preorder\Ui\Component\Listing\Column\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                     <item name="label" translate="true" xsi:type="string">Status</item>
+                  </item>
+            </argument>
+</column>
       </columns>
 </listing>

@@ -8,7 +8,7 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Task\Preorder\Model\PreorderFactory;
 use Task\Preorder\Model\ResourceModel\Preorder\CollectionFactory;
-use Task\preorder\Helper\SendEmail;
+use Task\Preorder\Helper\SendEmail;
 
 class Status extends Action
 {
@@ -42,11 +42,12 @@ class Status extends Action
                 $model = $this->preorderFactory->create()->load($item['preorder_id']);
                 $status = $this->getRequest()->getParam('status');
                 $model->setData('status', $status);
+               
                 if($status == 1){
                 $mailStatus = $this->mailer->sendMail("notify" , (array)$item->getData());
                 }
                 else{
-                $mailStatus = $this->mailer->sendMail("cancel" , (array)$item->getData());   
+                $mailStatus = $this->mailer->sendMail("cancel" , (array)$item->getData());          
                 }
                 $model->save();
                 $updated++;
@@ -60,7 +61,7 @@ class Status extends Action
         }
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-        return $resultRedirect;
+       return $resultRedirect;
     }
 
     protected function _isAllowed()

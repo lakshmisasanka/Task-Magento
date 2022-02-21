@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="CustomCart\Task\Api\Data\CustomCartInterface" type="CustomCart\Task\Model\CustomCart"/>
+    <preference for="CustomCart\Task\Api\CustomCartRepositoryInterface" type="CustomCart\Task\Model\CustomCartRepository"/>
+    <preference for="CustomCart\Task\Api\Data\CustomCartSearchResultsInterface" type="CustomCart\Task\Model\CustomCartSearchResults"/>
+</config>

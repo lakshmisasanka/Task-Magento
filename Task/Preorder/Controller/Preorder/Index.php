@@ -1,5 +1,5 @@
 <?php
-namespace Task\Preordr\Controller\Preorder;
+namespace Task\Preorder\Controller\Preorder;
 
 class Index extends \Magento\Framework\App\Action\Action
 {

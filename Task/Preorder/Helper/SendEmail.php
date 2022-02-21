@@ -88,7 +88,7 @@ class SendEmail extends AbstractHelper
                 'name' => 'Customer Relationship Manager',
                 'email' => $storeAdmin,
             ];
-
+           
             $postObject = new DataObject();
             $postObject->setData($this->_emailTemplateVar);
 
@@ -103,14 +103,15 @@ class SendEmail extends AbstractHelper
                 ->addTo($this->_recipient['email'], $this->_recipient['first_name'])
                 ->addBcc($storeAdmin)
                 ->getTransport();
-
+                        
             $transport->sendMessage();
 
             $this->_inlineTranslation->resume();
 
             return true;
         } catch (Exception $e) {
-            //$this->messageManager->addErrorMessage(__('Error').$e->getMessage());
+            
+            $this->messageManager->addErrorMessage(__('Error').$e->getMessage());
             $this->_inlineTranslation->resume();
         }
 
@@ -127,7 +128,6 @@ class SendEmail extends AbstractHelper
         $data['name'] = $data['first_name'] ." ". $data['last_name'];
         $this->setRecipient($data);
         $this->setTemplate($template, $data);
-
-        return $this->send();
+         return $this->send();
     }
 }
